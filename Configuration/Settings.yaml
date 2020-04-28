@@ -1,0 +1,26 @@
+Arsors:
+  GlobalContent:
+    # This is the main content dimension the plugin will use
+    # if you have another main content dimension overwrite this value in your package
+    contentDimension: language
+
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        'Arsors.GlobalContent': true
+    modules:
+      'management':
+        submodules:
+          'globalContent':
+            label: 'Global Content'
+            controller: 'Arsors\GlobalContent\Controller\GlobalContentController'
+            description: 'Manage global content and get the values via fusion.'
+            icon: 'icon-font'
+  Fusion:
+    defaultContext:
+      'Arsors.GlobalContent': 'Arsors\GlobalContent\Eel\Helper\GlobalContent'
+  Flow:
+    mvc:
+      routes:
+        'Arsors.GlobalContent': TRUE

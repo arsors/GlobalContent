@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="" product-name="Arsors.GlobalContent" source-language="de" datatype="plaintext">
+    <body>
+        <trans-unit id="remove">
+            <source>Entfernen</source>
+        </trans-unit>
+        <trans-unit id="remove.text">
+            <source>Möchten Sie wirklich den globalen Inhalt entfernen? Es gibt kein Zurück mehr!</source>
+        </trans-unit>
+        <trans-unit id="close">
+            <source>Schließen</source>
+        </trans-unit>
+        <trans-unit id="add.new">
+            <source>Neues Feld hinzufügen</source>
+        </trans-unit>
+        <trans-unit id="add.new.header">
+            <source>Ein neues globales Inhaltsfeld erstellen</source>
+        </trans-unit>
+        <trans-unit id="add.new.key">
+            <source>Key (wird zu einem Slug formatiert)</source>
+        </trans-unit>
+        <trans-unit id="add.new.type">
+            <source>Typ</source>
+        </trans-unit>
+        <trans-unit id="add.new.dimension">
+            <source>Dimension (leer lassen für Standard, Wert für neue Dimension einfügen)</source>
+        </trans-unit>
+        <trans-unit id="save">
+            <source>Speichern</source>
+        </trans-unit>
+        <trans-unit id="create">
+            <source>Erstellen</source>
+        </trans-unit>
+        <trans-unit id="copy">
+            <source>Kopieren</source>
+        </trans-unit>
+        <trans-unit id="default">
+            <source>Standard</source>
+        </trans-unit>
+        <trans-unit id="empty.content">
+            <source>Es sieht ziemlich leer aus! Worauf warten Sie noch? Legen Sie einen globalen Inhalt an!</source>
+        </trans-unit>
+    </body>
+  </file>
+</xliff>

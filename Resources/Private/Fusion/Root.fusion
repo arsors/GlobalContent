@@ -1,0 +1,26 @@
+prototype(Arsors.GlobalContent:Get) < prototype(Neos.Fusion:Value) {
+    // Set variables
+    key = null
+    @context.dimension = ${this.dimension ? this.dimension : Configuration.setting('Arsors.GlobalContent.contentDimension')}
+
+    // Check for content dimension prefix
+    prefix = Neos.Fusion:Value {
+        @if.contentDimensionsExists = ${Configuration.setting('Neos.ContentRepository')}
+        contentDimension = ${dimension}
+        currentDimensionProperty = ${Array.first(node.context.dimensions[this.contentDimension])}
+        @if.currentDimensionIsNotDefault = ${Configuration.setting('Neos.ContentRepository.contentDimensions.'+this.contentDimension+'.default') != this.currentDimensionProperty}
+        value = ${this.currentDimensionProperty}
+    }
+
+    // Return
+    value = ${this.key ? Arsors.GlobalContent.get(this.key,this.prefix) : 'No key is set.'}
+
+    // Cache rule
+    @cache {
+        mode = 'dynamic'
+        context {
+            1 = 'node'
+            2 = 'documentNode'
+        }
+    }
+}

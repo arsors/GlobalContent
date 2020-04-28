@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "arsors/globalcontent",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arsors\\GlobalContent\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Arsors.GlobalContent"
+        }
+    }
+}
