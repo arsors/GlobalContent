@@ -5,7 +5,7 @@ A NEOS extension package which adds a new backend menu item. It allows you to cr
 
 ## Install
 - Drop `composer require arsors/globalcontent` in your NEOS Project.
-- Migrate databse with `./flow doctrine:migrate`
+- Migrate database with `./flow doctrine:migrate`
 
 ## How to use
 - Login into NEOS
