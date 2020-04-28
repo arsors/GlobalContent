@@ -1,7 +1,18 @@
 {
-    "description": "",
-    "type": "neos-package",
     "name": "arsors/globalcontent",
+    "description": "A NEOS extension package which adds a new backend menu item. It allows you to create global content and read it everywhere from fusion.",
+    "keywords": ["Neos","Extension","Arsors","Global","Content","GlobalContent"],
+    "homepage": "https://github.com/arsors/GlobalContent",
+    "type": "neos-package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marvin Schieler",
+            "email": "hello@arsors.dev",
+            "homepage": "https://arsors.dev",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "neos/flow": "*"
     },
