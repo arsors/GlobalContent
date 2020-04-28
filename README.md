@@ -4,7 +4,7 @@ A NEOS extension package which adds a new backend menu item. It allows you to cr
 **Attention!! This package helped me to learn a few things about NEOS. It is a small rudimentary project which should be tested extensively before running in production mode.**
 
 ## Install
-- Drop `PATH` in your NEOS Project.
+- Drop `composer require arsors/globalcontent` in your NEOS Project.
 - Migrate databse with `./flow doctrine:migrate`
 
 ## How to use
