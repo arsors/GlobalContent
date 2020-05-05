@@ -43,9 +43,9 @@ class globalContent implements ProtectedContextAwareInterface {
                 if ($result->getGcDimension() === $dimension) {
                     return $result->getGcValue();
                 }
-                if ($fallback) return $fallback;
-                else return "Can't find a fallback key like \"".$key."\". Add this key for your default dimension.";
             }
+            if ($fallback) return $fallback;
+            else return "Can't find a fallback key like \"".$key."\". Add this key for your default dimension.";
         }
 
         // found nothing
