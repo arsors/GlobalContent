@@ -14,7 +14,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Eel\ProtectedContextAwareInterface;
 use Arsors\GlobalContent\Domain\Repository\GlobalContentRepository;
 
-class globalContent implements ProtectedContextAwareInterface {
+class GlobalContent implements ProtectedContextAwareInterface {
 
     /**
      * @Flow\Inject
