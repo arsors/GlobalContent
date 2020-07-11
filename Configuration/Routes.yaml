@@ -1,8 +1,0 @@
--
-  name: 'reorderGlobalContentList'
-  uriPattern: 'arsors/globalcontent/reorderList'
-  defaults:
-    '@package':    'Arsors.GlobalContent'
-    '@controller': 'GlobalContent'
-    '@action':     'reorder'
-    '@format':     'html'

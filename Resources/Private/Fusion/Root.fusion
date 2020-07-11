@@ -1,26 +1,86 @@
-prototype(Arsors.GlobalContent:Get) < prototype(Neos.Fusion:Value) {
-    // Set variables
-    key = null
-    @context.dimension = ${this.dimension ? this.dimension : Configuration.setting('Arsors.GlobalContent.contentDimension')}
-
-    // Check for content dimension prefix
-    prefix = Neos.Fusion:Value {
-        @if.contentDimensionsExists = ${Configuration.setting('Neos.ContentRepository')}
-        contentDimension = ${dimension}
-        currentDimensionProperty = ${Array.first(node.context.dimensions[this.contentDimension])}
-        @if.currentDimensionIsNotDefault = ${Configuration.setting('Neos.ContentRepository.contentDimensions.'+this.contentDimension+'.default') != this.currentDimensionProperty}
-        value = ${this.currentDimensionProperty}
-    }
-
-    // Return
-    value = ${this.key ? Arsors.GlobalContent.get(this.key,this.prefix) : 'No key is set.'}
-
-    // Cache rule
-    @cache {
-        mode = 'dynamic'
-        context {
-            1 = 'node'
-            2 = 'documentNode'
+prototype(Arsors.GlobalContent:GlobalContent) < prototype(Neos.Neos:Page) {
+    head {
+        stylesheets = Neos.Fusion:Component {
+            style = Neos.Fusion:ResourceUri {
+                path = 'resource://Arsors.GlobalContent/Public/Styles/style.css'
+            }
+            renderer = afx`
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+                <link rel="stylesheet" href={props.style} />
+            `
         }
     }
+
+    body = Neos.Fusion:Component {
+
+        javascripts = Neos.Neos:ContentComponent {
+            jquery = 'https://code.jquery.com/jquery-3.5.1.min.js'
+            src = Neos.Fusion:ResourceUri {
+                path = 'resource://Arsors.GlobalContent/Public/JavaScripts/script.js'
+            }
+            renderer = afx`
+                <script src={props.jquery}></script>
+                <script src={props.src}></script>
+            `
+        }
+
+        @context.list = ${Arsors.GlobalContent.generateGlobalContentArray(node.nodeType.localConfiguration.ui.groups,node.nodeType.localConfiguration.properties)}
+
+        generateEditableByNodeProperties = Neos.Fusion:Loop {
+            items = ${list}
+            itemKey = 'groupKey'
+            itemName = 'groupValue'
+            itemRenderer = Neos.Fusion:Component {
+                editableNodes = Neos.Fusion:Loop {
+                    items = ${groupValue.properties}
+                    itemKey = 'propKey'
+                    itemName = 'propValue'
+                    itemRenderer = Neos.Neos:ContentComponent {
+                        renderer = afx`
+                            <fieldset>
+                                <legend>{propKey}</legend>
+                                <Neos.Neos:Editable property={propKey} />
+                            </fieldset>
+                        `
+                    }
+                }
+                renderer = afx`
+                    <div class="accordion-wrapper">
+                        <div class="accordion-label" hc-href={groupKey} hc-active={!groupValue.collapsed ? 'true' : NULL}>
+                        <i class={"fas fa-"+groupValue.icon}></i>
+                            {groupValue.label}
+                            <svg class="accordion-arrow" viewBox="0 0 512 512"><path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z"></path></svg>
+                        </div>
+                        <div class="accordion-content" hc-id={groupKey}>
+                            {props.editableNodes}
+                        </div>
+                    </div>
+                `
+            }
+        }
+
+        # Render
+        renderer = afx`
+            <div @if.inBackend={node.context.inBackend}>
+                <h3>
+                    <div class="style__iconWrapper___2FyWp"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file" class="neos-svg-inline--fa neos-fa-file fa-w-12 style__icon___3acxC reset__reset___2e25U fas fa-file" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"></path></svg></div>
+                    Global Content
+                </h3>
+                <div hc-wrapper>
+                    {props.generateEditableByNodeProperties}
+                </div>
+            </div>
+            <div @if.inFrontend={!node.context.inBackend}></div>
+        `
+    }
+}
+
+prototype(getGlobalContent) < prototype(Neos.Fusion:Value) {
+
+    key = null
+    # Find global content by key
+    globalContent = ${q(site).children('[instanceof Arsors.GlobalContent:GlobalContent]').property(this.key)}
+    # Return
+    value = ${this.key ? (this.globalContent) ? this.globalContent : 'Can\'t find global content with key: "'+this.key+'"' : 'No key is set.'}
+
 }

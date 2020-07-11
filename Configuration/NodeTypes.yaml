@@ -1,0 +1,24 @@
+'Arsors.GlobalContent:GlobalContent':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    icon: 'icon-file'
+    label: 'Global Content'
+    position: 'end'
+#    groups:
+#      general:
+#        label: 'General'
+#        collapsed: true
+#        icon: 'globe'
+  properties:
+    metaRobotsNoindex:
+      defaultValue: TRUE
+    metaRobotsNofollow:
+      defaultValue: TRUE
+    _hiddenInIndex:
+      defaultValue: TRUE
+#    give-a-key:
+#      type: string
+#      defaultValue: 'Default Value'
+#      ui:
+#        inlineEditable: TRUE

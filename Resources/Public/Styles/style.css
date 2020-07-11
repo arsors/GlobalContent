@@ -1,0 +1,67 @@
+body {
+  background-color: #222;
+  font-family: Arial;
+  -webkit-font-smoothing: antialiased;
+  color: #ffffff;
+  padding: 25px;
+}
+
+legend {
+  background-color: #222;
+  padding: 5px 15px;
+  font-size: 14px;
+}
+
+fieldset {
+  background-color: #323232;
+  border: 0;
+  margin-bottom: 30px;
+}
+
+fieldset > div {
+  padding: 10px 5px;
+}
+
+.accordion-wrapper {
+  border-style: solid;
+  border-color: #3f3f3f;
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 0;
+  position: relative;
+}
+[hc-wrapper] .accordion-wrapper:last-child {
+  border-bottom-width: 1px;
+}
+
+.accordion-label {
+  padding: 15px;
+  cursor: pointer;
+}
+.accordion-label:hover {
+  background-color: #3f3f3f;
+}
+.accordion-label i {
+  margin-right: 10px;
+}
+
+.accordion-arrow {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  height: 14px;
+  width: 14px;
+  transform: rotate(180deg);
+  transition: transform 0.25s ease-in-out;
+}
+[hc-active] .accordion-arrow {
+  transform: rotate(0deg);
+}
+
+.accordion-content {
+  padding: 0 15px 15px 15px;
+}
+.accordion-content fieldset:last-child {
+  margin-bottom: 0;
+}
