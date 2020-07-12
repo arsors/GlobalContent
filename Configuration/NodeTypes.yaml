@@ -1,8 +1,13 @@
 'Arsors.GlobalContent:GlobalContent':
   superTypes:
+    'Arsors.GlobalContent:Abstract': true
+
+'Arsors.GlobalContent:Abstract':
+  abstract: true
+  superTypes:
     'Neos.Neos:Document': true
   ui:
-    icon: 'icon-file'
+    icon: 'file'
     label: 'Global Content'
     position: 'end'
 #    groups:
