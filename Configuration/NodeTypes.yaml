@@ -10,11 +10,12 @@
     icon: 'file'
     label: 'Global Content'
     position: 'end'
-#    groups:
-#      general:
-#        label: 'General'
-#        collapsed: true
-#        icon: 'globe'
+#    inspector:
+#      groups:
+#        general:
+#          label: 'General'
+#          collapsed: true
+#          icon: 'globe'
   properties:
     metaRobotsNoindex:
       defaultValue: TRUE

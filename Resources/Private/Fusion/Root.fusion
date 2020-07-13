@@ -24,7 +24,7 @@ prototype(Arsors.GlobalContent:Abstract) < prototype(Neos.Neos:Page) {
             `
         }
 
-        @context.list = ${Arsors.GlobalContent.generateGlobalContentArray(node.nodeType.localConfiguration.ui.groups,node.nodeType.localConfiguration.properties)}
+        @context.list = ${Arsors.GlobalContent.generateGlobalContentArray(node.nodeType.localConfiguration.ui.inspector.groups,node.nodeType.localConfiguration.properties)}
         generateEditableByNodeProperties = Neos.Fusion:Loop {
             items = ${list}
             itemKey = 'groupKey'

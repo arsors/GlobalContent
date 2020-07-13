@@ -10,14 +10,15 @@ Drop `composer require arsors/globalcontent` in your NEOS Project.
 ```
 'Arsors.GlobalContent:GlobalContent':
   ui:
-    groups:
-      default:
-        label: 'General'
-        collapsed: true
-        icon: 'globe' # Use fontawesome icon titles (without icon- prefix)
-      anotherGroup:
-        label: 'Another Group'
-        collapsed: false
+    inspector:
+      groups:
+        default:
+          label: 'General'
+          collapsed: true
+          icon: 'globe' # Use fontawesome icon titles (without icon- prefix)
+        anotherGroup:
+          label: 'Another Group'
+          collapsed: false
   properties:
     set-a-key:
       type: string
@@ -45,14 +46,15 @@ Arsors:
 ```
 'Arsors.GlobalContent:GlobalContent':
   ui:
-    groups:
-      default:
-        label: 'General'
-        collapsed: true
-        icon: 'globe' # Use fontawesome icon titles (without icon- prefix)
-      anotherGroup:
-        label: 'Another Group'
-        collapsed: false
+    inspector:
+      groups:
+        default:
+          label: 'General'
+          collapsed: true
+          icon: 'globe' # Use fontawesome icon titles (without icon- prefix)
+        anotherGroup:
+          label: 'Another Group'
+          collapsed: false
   properties:
     set-a-key:
       type: string
