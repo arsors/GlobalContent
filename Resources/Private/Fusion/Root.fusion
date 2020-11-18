@@ -89,7 +89,7 @@ prototype(getGlobalContent) < prototype(Neos.Fusion:Value) {
     }
 
     # Find global content by key
-    globalContent = ${q(site).children(this.instanceof).filter('['+this.key+']').property(this.key)}
+    globalContent = ${q(site).find(this.instanceof).filter('['+this.key+']').property(this.key)}
 
     # Return
     value = ${this.key ? (this.globalContent) ? this.globalContent : 'Can\'t find global content with key: "'+this.key+'"' : 'No key is set.'}
