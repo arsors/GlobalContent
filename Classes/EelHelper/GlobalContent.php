@@ -10,6 +10,7 @@
 
 namespace Arsors\GlobalContent\EelHelper;
 
+use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Flow\Annotations as Flow;
 use Neos\Eel\FlowQuery\FlowQuery;
 use Neos\Eel\ProtectedContextAwareInterface;
@@ -35,8 +36,9 @@ class GlobalContent implements ProtectedContextAwareInterface
      * @param string $key
      * @return string
      */
-    public function get($key=NULL): string
+    public function get(NodeInterface $node = null, $key = NULL): string
     {
+        if (!$node) return 'No node is set.';
         if (!$key) return 'No key is set.';
 
         /* build config filter string */
@@ -47,8 +49,7 @@ class GlobalContent implements ProtectedContextAwareInterface
         $instanceof = implode(',', $instanceof);
 
         /* Find global content by key */
-        $context = $this->contextFactory->create(); //Erstellt einen Context mit den Standard parametern
-        $q = new FlowQuery([$context->getCurrentSiteNode()]);
+        $q = new FlowQuery([$node->getContext()->getCurrentSiteNode()]);
         $globalContent = $q->find($instanceof)->filter('['.$key.']')->property($key);
 
         /* Return */
