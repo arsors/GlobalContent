@@ -87,11 +87,10 @@ prototype(Vendor.Packagename:AnotherGlobalContent) < prototype(Arsors.GlobalCont
 ## Read global properties  
 - Get the contents by fusion with:
 ```
-varName = getGlobalContent {
+varName = Arsors.GlobalContent:GetGlobalContent {
     key = 'your-feld-key'
 }
 ```
-**TIP** You can also use the shorthand `ggc` instead of `getGlobalContent`
 
 ## Deactivate standard global content NodeType
 - Add `'Arsors.GlobalContent:GlobalContent': ~` in a NodeTypes yaml file
