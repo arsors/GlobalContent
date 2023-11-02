@@ -78,7 +78,7 @@ prototype(Arsors.GlobalContent:Abstract) < prototype(Neos.Neos:Page) {
 # Register Arsors.GlobalContent:GlobalContent
 prototype(Arsors.GlobalContent:GlobalContent) < prototype(Arsors.GlobalContent:Abstract)
 
-prototype(getGlobalContent) < prototype(Neos.Fusion:Value) {
+prototype(Arsors.GlobalContent:GetGlobalContent) < prototype(Neos.Fusion:Value) {
     key = null
 
     # Build instanceof string
@@ -94,5 +94,3 @@ prototype(getGlobalContent) < prototype(Neos.Fusion:Value) {
     # Return
     value = ${this.key ? (this.globalContent) ? this.globalContent : 'Can\'t find global content with key: "'+this.key+'"' : 'No key is set.'}
 }
-# Register shorthand for getGlobalContent
-prototype(ggc) < prototype(getGlobalContent)
